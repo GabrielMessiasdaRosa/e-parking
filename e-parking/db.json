@@ -1,0 +1,18 @@
+{
+  "brands": [
+    {
+      "name": "toyota",
+      "id": 1
+    },
+    {
+      "name": "volkswagen",
+      "id": 2
+    }
+  ],
+  "cars": [
+    {
+      "plate": "",
+      "color": ""
+    }
+  ]
+}
