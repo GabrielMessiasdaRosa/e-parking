@@ -24,7 +24,7 @@ function App() {
       label: "Options",
       render: ({ rowData, index }) => {
         return (
-          <div>
+          <div key={rowData}>
             <Button index={index}>Edit</Button>
             <Button
               index={index}
@@ -115,7 +115,7 @@ export default App;
 //*************************** */
 //*************************** */
 //*************************** */
-{/* descomente para testar, execute npm start e olhe o console do navegador em localhost:3000.
+// descomente para testar, execute npm start e olhe o console do navegador em localhost:3000.
 
 
 //Acompanhe meu progresso na linguagem JavaScript !
@@ -242,6 +242,7 @@ const alunos = {
     },
   },
 };
+
 const calculaMedia = (nota1, nota2, nota3) => {
   const media = (nota1 + nota2 + nota3) / 3;
   media >= 7
@@ -259,23 +260,24 @@ const calculaMedia = (nota1, nota2, nota3) => {
         "\nREPROVADO"
       );
 };
+
 calculaMedia(
   alunos.aluno.materiasCadastradas.biologia.notas.bim1,
   alunos.aluno.materiasCadastradas.matematica.notas.bim1,
   alunos.aluno.materiasCadastradas.portugues.notas.bim1
 );
 // entendendo ternarios
-const pressedOnLikeButton = true; // para testar o ternario mude para false aqui
+const pressedOnLikeButton = false; // para testar o ternario mude para false aqui
 // o operador ternario é composto por 3 partes
 
 //            1º abaixo: expressao que retorna um bool (verdadeiro || falso)
-const liked = pressedOnLikeButton
+const liked = pressedOnLikeButton 
   ? //2º : uma especie de if acredito eu
     "retorna status de curtido e altera o state"
   : //3º : uma especie de else acredito eu
-    "retorna status de NAO curtido e nao altera o state ( acho que poderia ser null tambem)";
+    "retorna status de NAO curtido e nao altera o state\n ( acho que poderia ser null tambem)";
 
-// a sensaçao que da é que estamos fazendo literalmente uma pergunta const a = true? y : z
+// a sensaçao que da é que estamos fazendo literalmente uma pergunta const a = true ? y : n
 console.log(liked);
 
 // arrow function com retorno implicito
@@ -484,7 +486,6 @@ const senhaApartirDe = {minimo: 9900}//poderia ser o contrario
 console.log(senhaAleatoria(senhaApartirDe))
 //mesmo vale para todos os parametros em quaisquer posiçao, bem flexivel
 
-
 /// ###### DESTRUCTING, usando array dentro dos parametros de uma funçao; 
 
 const numeroSecreto = ([min=0, max = 1000]) => {
@@ -532,7 +533,7 @@ console.log('1º->', '1' == 1) // operador binario, aqui comparamos apenas o val
 
 //priorizar este >
 console.log("2º->", '2' === 2) // operador binario, aqui comparamos valor e tipo, '1' é uma string e 1 é um int,
-// se sao tipos diferentes o resultado é FALSE
+// se sao tipos e ou valores diferentes o resultado é FALSE
 
 console.log("3º->", '3' != 3) // mesmo acontece quando comparamos diferenças, aqui int 3 nao é diferente de String '3'
 // resultado FALSE, sao iguais
@@ -583,7 +584,7 @@ console.log(compras(false, false))
 }
 
 
-/// ### TERNARIOS ! FINALMENTE !
+/// ### TERNARIOS !!
 
 const ternariando = (event) => event === true ? "verdadeiro" : "false" // este é um operador ternario 
 console.log(ternariando(false))
@@ -600,4 +601,3 @@ let pessoa =
 
 console.log(pessoa.fala())
 
-*/}

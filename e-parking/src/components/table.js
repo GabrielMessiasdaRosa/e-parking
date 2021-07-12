@@ -2,9 +2,9 @@ import React from "react";
 import PropTypes from "prop-types";
 
 export default function Table({ data, columns, rowKey }) {
-    const defaultPadding = {
-        padding: 15
-}
+  const defaultPadding = {
+    padding: 15,
+  };
   const style = {
     border: "1px solid",
     margin: "auto",
@@ -24,19 +24,15 @@ export default function Table({ data, columns, rowKey }) {
         {data.map((rowData, index) => (
           <tr key={rowData[rowKey]}>
             {columns.map((column) => {
-              if (column.render) {
-                return (
-                  <td style={defaultPadding}>
-                    {column.render({ rowData, index })}
-                  </td>
-                );
-              } else {
-                return (
-                  <td key={column.path} style={ defaultPadding }>
-                    {rowData[column.path]}
-                  </td>
-                );
-              }
+              return column.render ? (
+                <td style={defaultPadding}>
+                  {column.render({ rowData, index })}
+                </td>
+              ) : (
+                <td key={column.path} style={defaultPadding}>
+                  {rowData[column.path]}
+                </td>
+              );
             })}
           </tr>
         ))}
