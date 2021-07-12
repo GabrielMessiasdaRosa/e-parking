@@ -6,6 +6,9 @@ import addIcoWhite from "../assets/addWhite.svg";
 import addIco from "../assets/addBlack.svg";
 import editIcoWhite from "../assets/editWhite.svg";
 import editIco from "../assets/editBlackSm.svg";
+
+
+
 const getSize = (size) =>
   ({
     xs: 24,
@@ -43,7 +46,7 @@ const getFontSize = (fontSize) =>
     xl: 18,
   }[fontSize]);
 
-var setButtonRectangleDefault = (size) => {
+const setButtonRectangleDefault = (size) => {
   return size * 2;
 };
 
@@ -139,7 +142,6 @@ Button.defaultProps = {
   intent: "primary",
   disabled: false,
   pending: false,
-  onclick: undefined,
   color: "black",
   fontWeight: "normal",
   fontSize: "md",

@@ -26,13 +26,13 @@ export default function Table({ data, columns, rowKey }) {
             {columns.map((column) => {
               if (column.render) {
                 return (
-                  <td style={style}>
+                  <td style={defaultPadding}>
                     {column.render({ rowData, index })}
                   </td>
                 );
               } else {
                 return (
-                  <td key={column.path} style={ style }>
+                  <td key={column.path} style={ defaultPadding }>
                     {rowData[column.path]}
                   </td>
                 );

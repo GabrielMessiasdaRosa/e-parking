@@ -56,9 +56,3 @@ Input.propTypes = {
   ]),
 };
 
-Input.defaultProps = {
-  value: undefined,
-  onChange: undefined,
-  placeholder: undefined,
-  type: undefined,
-};

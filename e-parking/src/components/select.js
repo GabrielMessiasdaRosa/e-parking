@@ -49,8 +49,6 @@ Select.propTypes = {
 Select.defaultProps = {
   autoFocus: false,
   disabled: false,
-  form: undefined,
   multiple: false,
-  name: undefined,
   required: false,
 };

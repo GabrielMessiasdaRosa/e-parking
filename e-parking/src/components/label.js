@@ -9,7 +9,4 @@ Label.propTypes = {
   children: PropTypes.string,
   htmlFor: PropTypes.string,
 };
-Label.defaultProps = {
-  children: undefined,
-  htmlFor: undefined,
-};
+
