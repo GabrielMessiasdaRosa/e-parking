@@ -5,10 +5,12 @@ export default function Table({ data, columns, rowKey }) {
   const defaultPadding = {
     padding: 15,
   };
+
   const style = {
-    border: "1px solid",
+    border: "1px",
     margin: "auto",
     padding: defaultPadding,
+    borderCollapse: "collapse"
   };
 
   return (
@@ -28,7 +30,7 @@ export default function Table({ data, columns, rowKey }) {
                 <td style={defaultPadding}>
                   {column.render({ rowData, index })}
                 </td>
-              ) : (
+              ) : ( //bssf (booth sides sad face)
                 <td key={column.path} style={defaultPadding}>
                   {rowData[column.path]}
                 </td>

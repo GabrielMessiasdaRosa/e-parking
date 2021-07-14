@@ -19,6 +19,8 @@ export default function Input({ id, value, onChange, placeholder, type }) {
     border: "none",
     backgroundColor: "orange",
     margin: "1em",
+    cursor: "pointer",
+
   };
   const styleOthers = {
     width: 250,

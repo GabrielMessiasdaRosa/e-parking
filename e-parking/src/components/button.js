@@ -7,8 +7,6 @@ import addIco from "../assets/addBlack.svg";
 import editIcoWhite from "../assets/editWhite.svg";
 import editIco from "../assets/editBlackSm.svg";
 
-
-
 const getSize = (size) =>
   ({
     xs: 24,
@@ -68,6 +66,7 @@ export default function Button({
   color,
   fontWeight,
   fontSize,
+  style
 }) {
   const getVariant = {
     solid: {
@@ -91,28 +90,31 @@ export default function Button({
       borderRadius: "5px",
     },
   };
-
+  
   const styles = {
     minHeight: getSize(size),
     minWidth: setButtonRectangleDefault(getSize(size)),
-    margin: "5px",
     color: color,
     fontWeight: getFontWeight(fontWeight),
     fontSize: getFontSize(fontSize),
+    boxShadow: "0px 1px 4px #000000",
+    cursor: "pointer",
+    backgroundColor: ""
   };
   return (
     <button
-      style={{ ...styles, ...getVariant[variant] }}
+      style={{...style, ...styles, ...getVariant[variant] }}
       variant={variant}
       size={size}
       disabled={disabled || pending}
+      
       onClick={onClick}
       fontWeight={fontWeight}
       color={color}
       fontSize={fontSize}
     >
       {pending ? "loading" : children}
-      <img src={getImg(img)} alt=""></img>
+      <img src={getImg(img)} alt=""/>
     </button>
   );
 }

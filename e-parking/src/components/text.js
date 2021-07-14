@@ -9,6 +9,7 @@ const getSize = (size) =>
     lg: 18,
     xl: 24,
   }[size]);
+
 const getFontWeight = (fontWeight) =>
   ({
     thin: 100,
