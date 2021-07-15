@@ -9,4 +9,3 @@ Label.propTypes = {
   children: PropTypes.string,
   htmlFor: PropTypes.string,
 };
-

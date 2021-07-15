@@ -10,6 +10,7 @@ import BrandsScreen from "./screens/brands-screen";
 import CarsScreen from "./screens/cars-screen";
 import BrandFormScreen from "./screens/brand-form-screen";
 import Menu from "./components/menu";
+import Footer from "./components/footer";
 
 const Routes = () => {
   const linkStyles = {
@@ -45,6 +46,7 @@ const Routes = () => {
           <CarsScreen />
         </Route>
       </Switch>
+      <Footer></Footer>
     </Router>
   );
 };

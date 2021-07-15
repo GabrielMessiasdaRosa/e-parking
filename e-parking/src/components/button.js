@@ -34,7 +34,7 @@ const getImg = (img) =>
     editIco,
     editIcoWhite,
   }[img]);
-  
+
 const getFontSize = (fontSize) =>
   ({
     xs: 14,
@@ -66,7 +66,7 @@ export default function Button({
   color,
   fontWeight,
   fontSize,
-  style
+  style,
 }) {
   const getVariant = {
     solid: {
@@ -90,7 +90,7 @@ export default function Button({
       borderRadius: "1px",
     },
   };
-  
+
   const styles = {
     minHeight: getSize(size),
     minWidth: setButtonRectangleDefault(getSize(size)),
@@ -99,22 +99,21 @@ export default function Button({
     fontSize: getFontSize(fontSize),
     boxShadow: "0px 1px 3px #000000",
     cursor: "pointer",
-    backgroundColor: ""
+    backgroundColor: "",
   };
   return (
     <button
-      style={{...style, ...styles, ...getVariant[variant] }}
+      style={{ ...style, ...styles, ...getVariant[variant] }}
       variant={variant}
       size={size}
       disabled={disabled || pending}
-      
       onClick={onClick}
       fontWeight={fontWeight}
       color={color}
       fontSize={fontSize}
     >
       {pending ? "loading" : children}
-      <img src={getImg(img)} alt=""/>
+      <img src={getImg(img)} alt="" />
     </button>
   );
 }

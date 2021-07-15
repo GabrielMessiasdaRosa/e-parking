@@ -10,6 +10,18 @@ export default function Input({
   disabled,
   required,
 }) {
+  const styleSubmit = {
+    width: 150,
+    height: 50,
+    border: "none",
+    backgroundColor: "orange",
+    cursor: "pointer",
+    boxShadow: "0px 1px 3px #000000",
+  };
+  const styleOthers = {
+    width: 250,
+    height: 30,
+  };
   return (
     <input
       id={id}
@@ -19,10 +31,10 @@ export default function Input({
       type={type}
       disabled={disabled}
       required={required}
+      style={type === "submit" ? styleSubmit : styleOthers}
     />
   );
-};
-
+}
 
 Input.propTypes = {
   id: PropTypes.string,

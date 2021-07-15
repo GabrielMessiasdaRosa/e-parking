@@ -6,6 +6,8 @@ import Button from "../components/button";
 import { useToast } from "../components/toast";
 import { useHistory, useParams } from "react-router-dom";
 import Label from "../components/label";
+import saveBrandService from "../services/save-brand-service";
+import getBrandsIdService from "../services/get-brand-id-service";
 const BrandFormScreen = () => {
   const [brandId, setBrandId] = React.useState();
   const [brandName, setBrandName] = React.useState("");
@@ -15,21 +17,11 @@ const BrandFormScreen = () => {
   const { id } = useParams();
 
   const saveBrand = () => {
-    const url = id
-      ? `http://localhost:8080/brands/${id}`
-      : "http://localhost:8080/brands";
-
-    const method = id ? "PUT" : "POST";
-
     const message = id
       ? `${brandName} successfully edited`
       : ` ${brandName} successfully added`;
 
-    fetch(url, {
-      headers: { "Content-Type": "application/json" },
-      method,
-      body: JSON.stringify({ name: brandName }),
-    }).then(() => {
+    saveBrandService({name: brandName, id}).then(() => {
       notify({
         intent: "success",
         message,
@@ -41,12 +33,10 @@ const BrandFormScreen = () => {
 
   React.useEffect(() => {
     if (id) {
-      fetch(`http://localhost:8080/brands/${id}`).then((response) => {
-        response.json().then((data) => {
+      getBrandsIdService({id}).then((data) => {
           setBrandId(data.id);
           setBrandName(data.name);
         });
-      });
     }
   }, [id]);
 
@@ -54,12 +44,14 @@ const BrandFormScreen = () => {
     <Container>
       <h1>{id ? "Edit brand" : "New Brand"}</h1>
       <Separator />
+      <div>
+      
       <Label htmlFor="id">
         <b>ID</b>
       </Label>
+      </div>
       <Separator />
       <form
-        style={{ maxWidth: 500 }}
         onSubmit={(event) => {
           event.preventDefault();
           saveBrand();
@@ -78,7 +70,7 @@ const BrandFormScreen = () => {
           required
         />
         <Separator />
-        <Button>Save</Button>
+        <Input type="submit" value="Save brand"/>
       </form>
     </Container>
   );

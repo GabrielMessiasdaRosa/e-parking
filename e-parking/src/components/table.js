@@ -3,7 +3,15 @@ import PropTypes from "prop-types";
 
 const Table = ({ data, columns, rowKey }) => {
   return (
-    <table border={1} style={{ borderCollapse: "collapse", border: 1,margin: "auto", maxWidth:"50em"}}>
+    <table
+      border={1}
+      style={{
+        borderCollapse: "collapse",
+        border: 1,
+        margin: "auto",
+        maxWidth: "50em",
+      }}
+    >
       <tr>
         {columns.map((column) => (
           <th key={column.path} style={{ padding: 10, width: column.width }}>

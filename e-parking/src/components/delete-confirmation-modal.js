@@ -1,3 +1,4 @@
+import deleteBrandService from "../services/delete-brand-service";
 import Button from "./button";
 import Separator from "./separator";
 import { useToast } from "./toast";
@@ -6,9 +7,7 @@ const DeleteConfirmationModal = ({ brand, onCancel, onSuccess }) => {
   const { notify } = useToast();
 
   const deleteBrand = () => {
-    fetch(`http://localhost:8080/brands/${brand.id}`, {
-      method: "DELETE",
-    }).then(() => {
+    deleteBrandService({ id: brand.id }).then(() => {
       notify({
         intent: "success",
         message: `Brand ${brand.name} successfully deleted `,

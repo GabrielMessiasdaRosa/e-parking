@@ -2,8 +2,7 @@ import React, { Children, Component } from "react";
 import PropTypes from "prop-types";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
-
-export default function Menu({children}) {
+export default function Menu({ children }) {
   const styles = {
     width: "100%",
     height: "10vh",
@@ -19,14 +18,11 @@ export default function Menu({children}) {
     listStyleType: "none",
   };
 
-
   return (
-      <div style={styles}>
-        <ul style={listStyles}>
-          <li>
-          {children}
-          </li>
-        </ul>
-      </div>
+    <div style={styles}>
+      <ul style={listStyles}>
+        <li>{children}</li>
+      </ul>
+    </div>
   );
 }

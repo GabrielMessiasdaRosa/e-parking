@@ -5,7 +5,7 @@ const ToastContext = React.createContext({
   notify: () => {},
 });
 
-const ToastProvider = ({ children, timeout = 5000 }) => {
+const ToastProvider = ({ children, timeout = 3000 }) => {
   const [visible, setVisible] = React.useState(false);
   const [message, setMessage] = React.useState("");
   const [intent, setIntent] = React.useState("primary");
@@ -22,7 +22,6 @@ const ToastProvider = ({ children, timeout = 5000 }) => {
   return (
     <ToastContext.Provider value={{ notify }}>
       {children}
-
       {createPortal(
         visible ? (
           <div

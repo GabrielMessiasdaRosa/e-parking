@@ -19,6 +19,7 @@ const BrandsScreen = () => {
     });
   };
 
+
   React.useEffect(() => {
     getBrands();
   }, []);
@@ -36,9 +37,9 @@ const BrandsScreen = () => {
           alignItems: "center",
         }}
       >
-        <h1>Marcas</h1>
+        <h1>Brands</h1>
         <Link to="/brands/new">
-          <Button>Add new brand</Button>
+          <Button size="lg" intent="info" img="addIcoWhite">Add new brand</Button>
         </Link>
       </div>
       <Separator />
