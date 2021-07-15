@@ -1,27 +1,26 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const getSize = (size) =>
-  ({
-    xs: 24,
-    sm: 30,
-    md: 40,
-    lg: 50,
-    xl: 60,
-  }[size]);
+const getSize = (size) => {
+  return {
+    xs: 4,
+    sm: 8,
+    md: 16,
+    lg: 32,
+    xl: 64,
+  }[size];
+};
 
-export default function Separator({ size }) {
-  const style = {
-    width: getSize(size),
-    height: getSize(size),
-  };
+const Separator = ({ size }) => {
+  return <div style={{ width: getSize(size), height: getSize(size) }} />;
+};
 
-  return <div style={style} size={size}></div>;
-}
+export default Separator;
 
 Separator.propTypes = {
   size: PropTypes.oneOf(["xs", "sm", "md", "lg", "xl"]),
 };
+
 Separator.defaultProps = {
   size: "md",
 };

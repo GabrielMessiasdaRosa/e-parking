@@ -1,18 +1,8 @@
 {
   "brands": [
     {
-      "name": "toyota",
+      "name": "img",
       "id": 1
-    },
-    {
-      "name": "volkswagen",
-      "id": 2
-    }
-  ],
-  "cars": [
-    {
-      "plate": "",
-      "color": ""
     }
   ]
 }

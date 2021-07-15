@@ -1,56 +1,52 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-export default function Table({ data, columns, rowKey }) {
-  const defaultPadding = {
-    padding: 15,
-  };
-
-  const style = {
-    border: "1px",
-    margin: "auto",
-    padding: defaultPadding,
-    borderCollapse: "collapse"
-  };
-
+const Table = ({ data, columns, rowKey }) => {
   return (
-    <table border={1} style={style}>
-      <thead>
-        <tr>
-          {columns.map((column) => (
-            <td key={column.path}>{column.label}</td>
-          ))}
-        </tr>
-      </thead>
-      <tbody>
-        {data.map((rowData, index) => (
+    <table border={1} style={{ borderCollapse: "collapse", border: 1,margin: "auto", maxWidth:"50em"}}>
+      <tr>
+        {columns.map((column) => (
+          <th key={column.path} style={{ padding: 10, width: column.width }}>
+            {column.label}
+          </th>
+        ))}
+      </tr>
+      {data.length ? (
+        data.map((rowData, index) => (
           <tr key={rowData[rowKey]}>
-            {columns.map((column) => {
-              return column.render ? (
-                <td style={defaultPadding}>
-                  {column.render({ rowData, index })}
+            {columns.map((column) =>
+              column.render ? (
+                <td style={{ padding: 10 }}>
+                  {column.render({ rowData, index })}{" "}
                 </td>
-              ) : ( //bssf (booth sides sad face)
-                <td key={column.path} style={defaultPadding}>
+              ) : (
+                <td key={column.path} style={{ padding: 10 }}>
                   {rowData[column.path]}
                 </td>
-              );
-            })}
+              )
+            )}
           </tr>
-        ))}
-      </tbody>
+        ))
+      ) : (
+        <tr>
+          <td colSpan={columns.length}>No data</td>
+        </tr>
+      )}
     </table>
   );
-}
+};
 
 Table.propTypes = {
-  data: PropTypes.arrayOf(PropTypes.object).isRequired,
+  data: PropTypes.arrayOf(PropTypes.object),
   columns: PropTypes.arrayOf(
     PropTypes.shape({
       path: PropTypes.string.isRequired,
-      label: PropTypes.string.isRequiredm,
+      label: PropTypes.string.isRequired,
       render: PropTypes.func,
+      width: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     })
   ),
-  rowKey: PropTypes.string.isRequired,
+  rowKey: PropTypes.string,
 };
+
+export default Table;

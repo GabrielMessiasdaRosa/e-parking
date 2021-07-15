@@ -34,7 +34,7 @@ const getImg = (img) =>
     editIco,
     editIcoWhite,
   }[img]);
-
+  
 const getFontSize = (fontSize) =>
   ({
     xs: 14,
@@ -74,20 +74,20 @@ export default function Button({
       backgroundColor: getIntent(intent),
       border: "none",
       borderColor: getIntent(intent),
-      borderRadius: "5px",
+      borderRadius: "1px",
     },
     outline: {
       color: "black",
       backgroundColor: "rgba(0, 0, 0, 0.0)",
       border: "solid",
       borderColor: getIntent(intent),
-      borderRadius: "5px",
+      borderRadius: "1px",
     },
     ghost: {
       color: "black",
       backgroundColor: "rgba(0,0,0,0.15)",
       border: "none",
-      borderRadius: "5px",
+      borderRadius: "1px",
     },
   };
   
@@ -97,7 +97,7 @@ export default function Button({
     color: color,
     fontWeight: getFontWeight(fontWeight),
     fontSize: getFontSize(fontSize),
-    boxShadow: "0px 1px 4px #000000",
+    boxShadow: "0px 1px 3px #000000",
     cursor: "pointer",
     backgroundColor: ""
   };

@@ -1,10 +1,7 @@
 import React, { Children, Component } from "react";
 import PropTypes from "prop-types";
-
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
-import Routes from "../routes";
-import Button from "./button";
 
 export default function Menu({children}) {
   const styles = {

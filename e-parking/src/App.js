@@ -1,17 +1,13 @@
-/* eslint-disable no-lone-blocks */
 import React from "react";
-import "./App.css";
-import Button from "./components/button";
-import Separator from "./components/separator";
-import Table from "./components/table";
-import Menu from "./components/menu";
-import Container from "./components/container";
 import Routes from "./routes";
+import ToastProvider from "./components/toast";
 
-function App() {
+const App = () => {
   return (
-    <Routes />
+    <ToastProvider>
+      <Routes />
+    </ToastProvider>
   );
-}
+};
 
 export default App;
