@@ -11,7 +11,7 @@ export default function Input({
   required,
 }) {
   const styleSubmit = {
-    width: 150,
+    width: 132,
     height: 50,
     border: "none",
     backgroundColor: "orange",

@@ -5,22 +5,28 @@ import Button from "../components/button";
 import Container from "../components/container";
 import Modal from "../components/modal";
 import { Link } from "react-router-dom";
-import DeleteConfirmationModal from "../components/delete-confirmation-modal";
+import DeleteBrandConfirmationModal from "../components/delete-brand-confirmation-modal copy";
+import getBrandsService from "../services/get-brands-service";
 
 const BrandsScreen = () => {
   const [brands, setBrands] = React.useState([]);
   const [deletingBrand, setDeletingBrand] = React.useState();
 
+
+
   const getBrands = () => {
-    fetch("http://localhost:8080/brands").then((result) => {
-      result.json().then((data) => {
-        setBrands(data);
-      });
-    });
+    
+    getBrandsService().then((data)=>{
+      setBrands(data)
+    })
+    
   };
 
 
+
   React.useEffect(() => {
+
+
     getBrands();
   }, []);
 
@@ -39,7 +45,8 @@ const BrandsScreen = () => {
       >
         <h1>Brands</h1>
         <Link to="/brands/new">
-          <Button size="lg" intent="info" img="addIcoWhite">Add new brand</Button>
+          <Button size="lg" intent="info" img="addIcoWhite">
+          Add new brand</Button>
         </Link>
       </div>
       <Separator />
@@ -52,6 +59,8 @@ const BrandsScreen = () => {
             path: "",
             label: "Options",
             width: "5%",
+
+
             render: ({ rowData }) => (
               <div style={{ display: "flex" }}>
                 <Link to={`/brands/${rowData.id}`}>
@@ -62,6 +71,7 @@ const BrandsScreen = () => {
                   intent="danger"
                   size="sm"
                   onClick={() => {
+
                     setDeletingBrand(rowData);
                   }}
                 >
@@ -79,7 +89,7 @@ const BrandsScreen = () => {
         }}
       >
         {deletingBrand ? (
-          <DeleteConfirmationModal
+          <DeleteBrandConfirmationModal
             brand={deletingBrand}
             onCancel={() => onRequestClose()}
             onSuccess={() => {
@@ -89,6 +99,15 @@ const BrandsScreen = () => {
           />
         ) : null}
       </Modal>
+      <Separator size="xl"/>
+      <Separator size="xl"/>
+      <Separator size="xl"/>
+      <Separator size="xl"/>
+      <Separator size="md"/>
+      <Separator size="xl"/>
+      <Separator size="xl"/>
+      
+
     </Container>
   );
 };

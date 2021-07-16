@@ -5,7 +5,7 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 export default function Menu({ children }) {
   const styles = {
     width: "100%",
-    height: "10vh",
+    height: "15vh",
     margin: "0",
     padding: "1em",
     display: "flex",

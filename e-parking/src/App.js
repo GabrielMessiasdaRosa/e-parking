@@ -5,10 +5,12 @@ import Footer from "./components/footer";
 
 const App = () => {
   return (
-    <ToastProvider>
+    <>
+      <ToastProvider>
+      
       <Routes />
-    </ToastProvider>
-    
+      </ToastProvider>
+    </>
   );
 };
 

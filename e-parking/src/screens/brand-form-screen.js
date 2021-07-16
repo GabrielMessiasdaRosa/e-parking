@@ -4,10 +4,11 @@ import Separator from "../components/separator";
 import Input from "../components/input";
 import Button from "../components/button";
 import { useToast } from "../components/toast";
-import { useHistory, useParams } from "react-router-dom";
+import { useHistory, useParams,Link } from "react-router-dom";
 import Label from "../components/label";
 import saveBrandService from "../services/save-brand-service";
 import getBrandsIdService from "../services/get-brand-id-service";
+
 const BrandFormScreen = () => {
   const [brandId, setBrandId] = React.useState();
   const [brandName, setBrandName] = React.useState("");
@@ -21,7 +22,7 @@ const BrandFormScreen = () => {
       ? `${brandName} successfully edited`
       : ` ${brandName} successfully added`;
 
-    saveBrandService({name: brandName, id}).then(() => {
+    saveBrandService({ name: brandName, id }).then(() => {
       notify({
         intent: "success",
         message,
@@ -33,10 +34,10 @@ const BrandFormScreen = () => {
 
   React.useEffect(() => {
     if (id) {
-      getBrandsIdService({id}).then((data) => {
-          setBrandId(data.id);
-          setBrandName(data.name);
-        });
+      getBrandsIdService({ id }).then((data) => {
+        setBrandId(data.id);
+        setBrandName(data.name);
+      });
     }
   }, [id]);
 
@@ -45,10 +46,9 @@ const BrandFormScreen = () => {
       <h1>{id ? "Edit brand" : "New Brand"}</h1>
       <Separator />
       <div>
-      
-      <Label htmlFor="id">
-        <b>ID</b>
-      </Label>
+        <Label htmlFor="id">
+          <b>ID</b>
+        </Label>
       </div>
       <Separator />
       <form
@@ -60,7 +60,7 @@ const BrandFormScreen = () => {
         <Input id="id" disabled value={brandId} />
         <Separator />
         <Label htmlFor="name">
-          <b>Brand Name</b>
+          <b>{id ? `Rename brand: ${brandName}` : "Brand Name"}</b>
         </Label>
         <Separator />
         <Input
@@ -70,8 +70,17 @@ const BrandFormScreen = () => {
           required
         />
         <Separator />
-        <Input type="submit" value="Save brand"/>
+        <Input type="submit" value="Save brand" />
+        <Link to="/brands">
+          <Button size="lg" style={{margin:"1em"}} intent="danger">Cancel</Button>
+        </Link>
       </form>
+      <Separator size="xl"/>
+      <Separator size="xl"/>
+      <Separator size="xl"/>
+      <Separator size="md"/>
+      <Separator size="xl"/>
+      <Separator size="xl"/>
     </Container>
   );
 };

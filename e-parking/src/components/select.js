@@ -27,6 +27,7 @@ export default function Select({
       required={required}
       onChange={(e) => onChange(e.target.value)}
       style={style}
+      
     >
       {options.map((option) => (
         <option selected={option.value === value} value={option.value}>
@@ -36,6 +37,7 @@ export default function Select({
     </select>
   );
 }
+
 
 Select.propTypes = {
   autoFocus: PropTypes.bool,

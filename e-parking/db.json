@@ -1,8 +1,9 @@
 {
   "brands": [
     {
-      "name": "google",
+      "name": "Volkswagen",
       "id": 1
     }
-  ]
+  ],
+  "cars": []
 }
