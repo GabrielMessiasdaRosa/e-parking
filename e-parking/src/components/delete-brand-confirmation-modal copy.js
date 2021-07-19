@@ -1,4 +1,4 @@
-import deleteBrandService from "../services/delete-brand-service";
+import deleteBrandService from "../services/brand-services/delete-brand-service";
 import Button from "./button";
 import Separator from "./separator";
 import { useToast } from "./toast";

@@ -1,13 +1,13 @@
 import React from "react";
-import Container from "../components/container";
-import Separator from "../components/separator";
-import Input from "../components/input";
-import Button from "../components/button";
-import { useToast } from "../components/toast";
+import Container from "../../components/container";
+import Separator from "../../components/separator";
+import Input from "../../components/input";
+import Button from "../../components/button";
+import { useToast } from "../../components/toast";
 import { useHistory, useParams,Link } from "react-router-dom";
-import Label from "../components/label";
-import saveBrandService from "../services/save-brand-service";
-import getBrandsIdService from "../services/get-brand-id-service";
+import Label from "../../components/label";
+import saveBrandService from "../../services/brand-services/save-brand-service"
+import getBrandsIdService from "../../services/brand-services/get-brand-id-service";
 
 const BrandFormScreen = () => {
   const [brandId, setBrandId] = React.useState();

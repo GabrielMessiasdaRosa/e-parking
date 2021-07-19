@@ -1,32 +1,24 @@
 import React from "react";
-import Table from "../components/table";
-import Separator from "../components/separator";
-import Button from "../components/button";
-import Container from "../components/container";
-import Modal from "../components/modal";
+import Table from "../../components/table";
+import Separator from "../../components/separator";
+import Button from "../../components/button";
+import Container from "../../components/container";
+import Modal from "../../components/modal";
 import { Link } from "react-router-dom";
-import DeleteBrandConfirmationModal from "../components/delete-brand-confirmation-modal copy";
-import getBrandsService from "../services/get-brands-service";
+import DeleteBrandConfirmationModal from "../../components/delete-brand-confirmation-modal copy";
+import getBrandsService from "../../services/brand-services/get-brands-service";
 
 const BrandsScreen = () => {
   const [brands, setBrands] = React.useState([]);
   const [deletingBrand, setDeletingBrand] = React.useState();
 
-
-
   const getBrands = () => {
-    
-    getBrandsService().then((data)=>{
-      setBrands(data)
-    })
-    
+    getBrandsService().then((data) => {
+      setBrands(data);
+    });
   };
 
-
-
   React.useEffect(() => {
-
-
     getBrands();
   }, []);
 
@@ -46,7 +38,8 @@ const BrandsScreen = () => {
         <h1>Brands</h1>
         <Link to="/brands/new">
           <Button size="lg" intent="info" img="addIcoWhite">
-          Add new brand</Button>
+            Add new brand
+          </Button>
         </Link>
       </div>
       <Separator />
@@ -60,7 +53,6 @@ const BrandsScreen = () => {
             label: "Options",
             width: "5%",
 
-
             render: ({ rowData }) => (
               <div style={{ display: "flex" }}>
                 <Link to={`/brands/${rowData.id}`}>
@@ -71,7 +63,6 @@ const BrandsScreen = () => {
                   intent="danger"
                   size="sm"
                   onClick={() => {
-
                     setDeletingBrand(rowData);
                   }}
                 >
@@ -99,15 +90,13 @@ const BrandsScreen = () => {
           />
         ) : null}
       </Modal>
-      <Separator size="xl"/>
-      <Separator size="xl"/>
-      <Separator size="xl"/>
-      <Separator size="xl"/>
-      <Separator size="md"/>
-      <Separator size="xl"/>
-      <Separator size="xl"/>
-      
-
+      <Separator size="xl" />
+      <Separator size="xl" />
+      <Separator size="xl" />
+      <Separator size="xl" />
+      <Separator size="md" />
+      <Separator size="xl" />
+      <Separator size="xl" />
     </Container>
   );
 };

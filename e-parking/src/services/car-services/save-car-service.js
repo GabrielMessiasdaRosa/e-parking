@@ -1,4 +1,4 @@
-import fetchApi from "./fetch-api";
+import fetchApi from "../fetch-api";
 
 const saveCarService = ({ id, name, color, plate }) => {
   return fetchApi({

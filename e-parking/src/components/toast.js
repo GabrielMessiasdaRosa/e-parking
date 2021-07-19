@@ -32,17 +32,18 @@ const ToastProvider = ({ children, timeout = 3000 }) => {
               left: 0,
               right: 0,
               padding: 16,
-              borderRadius: 8,
+              borderRadius: 2,
               margin: "0 auto",
               position: "absolute",
               color: "#fff",
               transition: "1s ease-in-out",
               background: {
-                primary: "blue",
-                danger: "red",
-                warning: "orange",
-                success: "green",
-                info: "teal",
+                primary: "#0d6efd",
+                secondary: "#343a40",
+                danger: "#dc3545",
+                warning: "#ffc830",
+                info: "#0dcaf0",
+                success: "#198754"
               }[intent],
             }}
           >

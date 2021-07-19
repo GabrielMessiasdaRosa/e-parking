@@ -1,9 +1,16 @@
 {
   "brands": [
     {
-      "name": "Volkswagen",
+      "name": "carro.js",
       "id": 1
     }
   ],
-  "cars": []
+  "cars": [
+    {
+      "name": "GOLF ",
+      "color": "BLACk",
+      "plate": "AFs-8000",
+      "id": 1
+    }
+  ]
 }

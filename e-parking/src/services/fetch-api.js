@@ -4,7 +4,8 @@ const fetchApi = async ({ url, method = "GET", body }) => {
     method,
     body: JSON.stringify(body),
   });
-  const data = await response.json()
-  return data
+  const data = await response.json();
+  return data;
 };
 export default fetchApi;
+

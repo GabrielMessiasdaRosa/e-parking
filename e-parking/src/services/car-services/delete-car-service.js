@@ -1,4 +1,4 @@
-import fetchApi from "./fetch-api";
+import fetchApi from "../fetch-api";
 
 const deleteCarService = ({ id }) => {
   return fetchApi({ url: `/cars/${id}`, method: "DELETE" });

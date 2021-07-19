@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-export default function Input({
+const Input=({
   id,
   value,
   onChange,
@@ -9,7 +9,7 @@ export default function Input({
   type,
   disabled,
   required,
-}) {
+}) => {
   const styleSubmit = {
     width: 132,
     height: 50,
@@ -35,6 +35,8 @@ export default function Input({
     />
   );
 }
+export default Input;
+
 
 Input.propTypes = {
   id: PropTypes.string,

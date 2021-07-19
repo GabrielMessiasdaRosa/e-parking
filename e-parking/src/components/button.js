@@ -21,6 +21,7 @@ const getIntent = (intent) =>
     primary: "#0d6efd",
     secondary: "#343a40",
     danger: "#dc3545",
+    warning: "#ffc830",
     info: "#0dcaf0",
     success: "#198754",
   }[intent]);
@@ -54,7 +55,7 @@ const getFontWeight = (fontWeight) =>
     bold: 700,
   }[fontWeight]);
 
-export default function Button({
+const Button = ({
   children,
   variant,
   size,
@@ -67,7 +68,7 @@ export default function Button({
   fontWeight,
   fontSize,
   style,
-}) {
+}) => {
   const getVariant = {
     solid: {
       color: "#fff",
@@ -116,8 +117,8 @@ export default function Button({
       <img src={getImg(img)} alt="" />
     </button>
   );
-}
-
+};
+export default Button;
 Button.propTypes = {
   children: PropTypes.node.isRequired,
   variant: PropTypes.oneOf(["solid", "outline", "ghost"]),

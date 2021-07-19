@@ -1,4 +1,4 @@
-import fetchApi from "./fetch-api";
+import fetchApi from "../fetch-api";
 
 const getBrandsService = () => {
   return fetchApi({ url: "/brands" });

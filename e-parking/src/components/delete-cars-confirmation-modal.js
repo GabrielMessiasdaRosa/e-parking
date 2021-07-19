@@ -1,4 +1,4 @@
-import deleteCarService from "../services/delete-car-service";
+import deleteCarService from "../services/car-services/delete-car-service";
 import Button from "./button";
 import Separator from "./separator";
 import { useToast } from "./toast";
@@ -18,7 +18,7 @@ const DeleteCarConfirmationModal = ({ cars, onCancel, onSuccess }) => {
   return (
     <>
       <h3>{cars.name}</h3>
-      <Text>Are you sure you want to delete{cars.name}?</Text>
+      <Text>Are you sure you want to delete {cars.name}?</Text>
       <Separator />
       <div style={{ display: "flex" }}>
         <Button intent="secondary" onClick={() => onCancel()}>

@@ -23,7 +23,7 @@ const getFontWeight = (fontWeight) =>
     black: 900,
   }[fontWeight]);
 
-export default function Text({ children, size, color, fontWeight }) {
+const Text=({ children, size, color, fontWeight }) => {
   return (
     <p
       size={size}
@@ -39,7 +39,7 @@ export default function Text({ children, size, color, fontWeight }) {
     </p>
   );
 }
-
+export default Text;
 Text.propTypes = {
   children: PropTypes.node,
   size: PropTypes.oneOf(["xs", "sm", "md", "lg", "xl"]),

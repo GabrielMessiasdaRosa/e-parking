@@ -1,4 +1,4 @@
-import fetchApi from "./fetch-api";
+import fetchApi from "../fetch-api";
 const getCarIdService = ({id}) => {
         return fetchApi({url: `/cars/${id}`})
 }
