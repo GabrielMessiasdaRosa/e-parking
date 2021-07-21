@@ -7,8 +7,7 @@ const App = () => {
   return (
     <>
       <ToastProvider>
-      
-      <Routes />
+        <Routes />
       </ToastProvider>
     </>
   );

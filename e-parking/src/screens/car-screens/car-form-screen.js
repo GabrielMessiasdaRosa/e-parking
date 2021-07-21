@@ -9,41 +9,49 @@ import saveCarService from "../../services/car-services/save-car-service";
 import getCarsIdService from "../../services/car-services/get-car-id-service";
 import Button from "../../components/button";
 import SelectBrand from "../../components/select-brand";
+import useForm from "../../hooks/use-form";
+
 const CarFormScreen = () => {
-  const [carId, setCarId] = React.useState();
-  const [carName, setCarName] = React.useState("");
-  const [carLisencePlate, setCarLisencePlate] = React.useState("");
-  const [carColor, setCarColor] = React.useState("");
   const { notify } = useToast();
   const { goBack } = useHistory();
-  const [selectedBrand, setSelectedBrand] = React.useState(null);
+  const [selectedBrand, setSelectedBrand] = React.useState();
   const { id } = useParams();
-
-  const saveCar = () => {
-    const message = id
-      ? `${carName} successfully edited`
-      : ` ${carName} successfully added`;
-
-    saveCarService({
-      name: carName,
-      id,
-      color: carColor,
-      plate: carLisencePlate,
-    }).then(() => {
-      notify({
-        intent: "success",
-        message,
+  const { getValue, setValue, submit } = useForm({
+    initialValues: {},
+    onSubmit: ({ car }) => {
+      const {
+        id,
+        name,
+        plate,
+        color,
+        brandName = selectedBrand.name,
+        brandId = selectedBrand.id,
+      } = car;
+      const message = id
+        ? `${name} successfully edited`
+        : ` ${name} successfully added`;
+      console.log(brandId);
+      saveCarService({
+        id,
+        name,
+        plate,
+        color,
+        brandId,
+        brandName,
+      }).then(() => {
+        notify({
+          intent: "success",
+          message,
+        });
+        goBack();
       });
-      setCarName("");
-      goBack();
-    });
-  };
+    },
+  });
 
   React.useEffect(() => {
     if (id) {
       getCarsIdService({ id }).then((data) => {
-        setCarId(data.id);
-        setCarName(data.name);
+        setValue("cars", data);
       });
     }
   }, [id]);
@@ -59,57 +67,53 @@ const CarFormScreen = () => {
       </div>
       <Separator />
 
-      <form
-        onSubmit={(event) => {
-          event.preventDefault();
-          saveCar();
-        }}
-      >
-        <Input id="id" disabled value={carId} />
+      <form onSubmit={submit}>
+        <Input id="id" disabled value={getValue("car.id")} />
         <Separator />
         <Label htmlFor="selectBrand">
           <b>Select a Brand</b>
         </Label>
-        <Separator/>
+        <Separator />
+
         <SelectBrand
-        id="selectBrand"
-          value={selectedBrand?.id}
-          onChange={(brand) => setSelectedBrand(brand)}
+          id="selectBrand"
+          value={getValue("car.brandName")}
+          onChange={(brand) => setValue(setSelectedBrand(brand))}
         />
         <Separator />
         <Label htmlFor="name">
-          <b>{id ? `Rename car: ${carName}` : "Car Name"}</b>
+          <b>{id ? `Rename car: ${getValue("car.name")}` : "Car Name"}</b>
         </Label>
         <Separator />
         <Input
           id="name"
-          value={carName.toUpperCase()}
-          onChange={(value) => setCarName(value)}
+          value={getValue("car.name")}
+          onChange={(value) => setValue("car.name", value)}
           required
         />
         <Separator />
         <Separator />
         <Label htmlFor="plate">
-          <b>{id ? `Edit Plate: ${carLisencePlate}` : "Lisence Plate"}</b>
+          <b>{id ? `Edit Plate: ${getValue("car.plate")}` : "Lisence Plate"}</b>
         </Label>
         <Separator />
         <Input
           style={{}}
           id="name"
-          value={carLisencePlate.toUpperCase()}
-          onChange={(value) => setCarLisencePlate(value)}
+          value={getValue("car.plate")}
+          onChange={(value) => setValue("car.plate", value)}
           required
         />
         <Separator />
         <Separator />
         <Label htmlFor="plate">
-          <b>{id ? `Edit color: ${carColor}` : "Set Color"}</b>
+          <b>{id ? `Edit color: ${getValue("car.color")}` : "Set Color"}</b>
         </Label>
         <Separator />
         <Input
           id="name"
-          value={carColor.toUpperCase()}
-          onChange={(value) => setCarColor(value)}
+          value={getValue("car.color")}
+          onChange={(value) => setValue("car.color", value)}
           required
         />
         <Separator />

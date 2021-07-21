@@ -1,16 +1,86 @@
 {
   "brands": [
     {
-      "name": "carro.js",
+      "name": "volkswagen",
       "id": 1
+    },
+    {
+      "name": "toyota",
+      "id": 2
+    },
+    {
+      "name": "ford",
+      "id": 3
+    },
+    {
+      "name": "honda",
+      "id": 4
+    },
+    {
+      "name": "hyundai",
+      "id": 5
+    },
+    {
+      "name": "nissan",
+      "id": 6
+    },
+    {
+      "name": "chevrolet",
+      "id": 7
+    },
+    {
+      "name": "kia",
+      "id": 8
     }
   ],
   "cars": [
     {
-      "name": "GOLF ",
-      "color": "BLACk",
-      "plate": "AFs-8000",
-      "id": 1
+      "name": "HB20 ",
+      "color": "WHITE ",
+      "plate": "AHG-5555",
+      "brandId": 5,
+      "brandName": "hyundai",
+      "id": 3
+    },
+    {
+      "name": "CIVIC ",
+      "color": "DARK BLUE ",
+      "plate": "ABC-6549",
+      "brandId": 4,
+      "brandName": "honda",
+      "id": 4
+    },
+    {
+      "name": "FIESTA ",
+      "color": "BLACK ",
+      "plate": "AFG-6548",
+      "brandId": 3,
+      "brandName": "ford",
+      "id": 5
+    },
+    {
+      "name": "HB20S",
+      "color": "WHITE ",
+      "plate": "AFG-9826",
+      "brandId": 5,
+      "brandName": "hyundai",
+      "id": 6
+    },
+    {
+      "name": "CIVIC ",
+      "color": "WHITE ",
+      "plate": "FRS-5482",
+      "brandId": 4,
+      "brandName": "honda",
+      "id": 7
+    },
+    {
+      "name": "FUSCA ",
+      "color": "BLUE ",
+      "plate": "AFG-9561",
+      "brandId": 1,
+      "brandName": "volkswagen",
+      "id": 8
     }
   ]
 }

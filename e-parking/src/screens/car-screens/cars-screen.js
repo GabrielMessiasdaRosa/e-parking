@@ -7,39 +7,38 @@ import Modal from "../../components/modal";
 import { Link } from "react-router-dom";
 import DeleteCarConfirmationModal from "../../components/delete-cars-confirmation-modal";
 import getCarsService from "../../services/car-services/get-car-service";
-import Select from "../../components/select";
 import Input from "../../components/input";
-import getBrandsService from "../../services/brand-services/get-brands-service";
 import Label from "../../components/label";
 import SelectBrand from "../../components/select-brand";
-import useBrands from "../../hooks/brands-hooks/use-brands-hooks";
-
-
-
-
-
-
+import useBrands from "../../hooks/use-brands-hooks";
 
 const CarsScreen = () => {
   const [cars, setcars] = React.useState([]);
   const [deletingCar, setDeletingCar] = React.useState();
-  const [selectedBrand, setSelectedBrand] = React.useState(null);
-  const { brands } = useBrands();
+  const [selectedBrand, setSelectedBrand] = React.useState("");
+  const [search, setSeach] = React.useState("");
+  const { brands, loadBrands } = useBrands();
+  const brandId = selectedBrand?.id;
+
   const getCars = () => {
     getCarsService().then((data) => {
       setcars(data);
     });
   };
-
+  const filteredCars = cars.filter(
+    (car) =>
+      car.name.startsWith(search) ||
+      car.brandName.startsWith(search) ||
+      car.plate.startsWith(search) ||
+      car.color.startsWith(search)
+  );
   const onRequestClose = () => {
     setDeletingCar(undefined);
   };
-
-    
-  useBrands(brands)
+  console.log(selectedBrand.name)
+  useBrands(brands);
 
   React.useEffect(() => {
-    
     getCars();
   }, []);
 
@@ -54,10 +53,15 @@ const CarsScreen = () => {
       >
         <h1>Cars</h1>
         <Label htmlFor="searchCar">Search car</Label>
-        <Input id="searchCar" placeholder="Golf GTI"></Input>
-        <Label>Selected Brand: {selectedBrand?.name}</Label>
+        <Input
+          id="searchCar"
+          placeholder="Golf GTI"
+          value={search}
+          onChange={(value) => setSeach(value)}
+        ></Input>
+        <Label>Select a Brand:</Label>
         <SelectBrand
-          value={selectedBrand?.id}
+          value={brandId}
           onChange={(brand) => setSelectedBrand(brand)}
         />
         {/*perguntar como funciona*/}
@@ -69,11 +73,11 @@ const CarsScreen = () => {
       </div>
       <Separator />
       <Table
-        data={cars}
+        data={filteredCars}
         columns={[
           { path: "plate", label: "Lisence Plate", width: "25%" },
           { path: "color", label: "Color", width: "25%" },
-          { path: "brands", label: "Brand", width: "25%" },
+          { path: "brandName", label: "Brand", width: "25%" },
           { path: "name", label: "Car Model", width: "25%" },
           {
             path: "",
@@ -90,6 +94,7 @@ const CarsScreen = () => {
                   intent="danger"
                   size="sm"
                   onClick={() => {
+                    loadBrands();
                     setDeletingCar(rowData);
                   }}
                 >

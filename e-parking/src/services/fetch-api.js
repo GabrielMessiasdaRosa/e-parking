@@ -1,5 +1,5 @@
 const fetchApi = async ({ url, method = "GET", body }) => {
-  const response = await fetch(`http://localhost:8080${url}`, {
+  const response = await fetch(`http://localhost:8000${url}`, {
     headers: { "Content-Type": "application/json" },
     method,
     body: JSON.stringify(body),

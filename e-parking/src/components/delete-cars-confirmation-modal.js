@@ -17,8 +17,8 @@ const DeleteCarConfirmationModal = ({ cars, onCancel, onSuccess }) => {
   };
   return (
     <>
-      <h3>{cars.name}</h3>
-      <Text>Are you sure you want to delete {cars.name}?</Text>
+      <Text size="h1">{cars.name}</Text>
+      <Text size="h2">Are you sure you want to delete {cars.name}?</Text>
       <Separator />
       <div style={{ display: "flex" }}>
         <Button intent="secondary" onClick={() => onCancel()}>

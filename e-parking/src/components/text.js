@@ -3,11 +3,11 @@ import PropTypes from "prop-types";
 
 const getSize = (size) =>
   ({
-    xs: 10,
-    sm: 13,
-    md: 16,
-    lg: 18,
-    xl: 24,
+    h5: 10,
+    h4: 13,
+    h3: 16,
+    h2: 18,
+    h1: 24,
   }[size]);
 
 const getFontWeight = (fontWeight) =>
@@ -42,7 +42,7 @@ const Text=({ children, size, color, fontWeight }) => {
 export default Text;
 Text.propTypes = {
   children: PropTypes.node,
-  size: PropTypes.oneOf(["xs", "sm", "md", "lg", "xl"]),
+  size: PropTypes.oneOf(["h5", "h4", "h3", "h2", "h1"]),
   color: PropTypes.string,
   fontWeight: PropTypes.oneOf([
     "thin",

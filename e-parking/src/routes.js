@@ -15,6 +15,7 @@ import Footer from "./components/footer";
 import Home from "./screens/homes-screen";
 import Separator from "./components/separator";
 
+
 const Routes = () => {
   const linkStyles = {
     textDecoration: "none",
@@ -39,10 +40,8 @@ const Routes = () => {
             Cars
           </Link>
         </Menu>
+  
         <Separator />
-        <div class="alert alert-danger container  m-auto p-2" role="alert">
-          <h4>WARNING!!! IN DEVELOPMENT!!! v0.1.0</h4>
-        </div>
         <Separator size="xl" />
         <Switch>
           <Route exact path="/e-parking">

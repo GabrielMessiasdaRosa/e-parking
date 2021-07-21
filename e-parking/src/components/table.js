@@ -12,34 +12,38 @@ const Table = ({ data, columns, rowKey }) => {
         maxWidth: "50em",
       }}
     >
-      <tr>
-        {columns.map((column) => (
-          <th key={column.path} style={{ padding: 10, width: column.width }}>
-            {column.label}
-          </th>
-        ))}
-      </tr>
-      {data.length ? (
-        data.map((rowData, index) => (
-          <tr key={rowData[rowKey]}>
-            {columns.map((column) =>
-              column.render ? (
-                <td style={{ padding: 10 }}>
-                  {column.render({ rowData, index })}{" "}
-                </td>
-              ) : (
-                <td key={column.path} style={{ padding: 10 }}>
-                  {rowData[column.path]}
-                </td>
-              )
-            )}
-          </tr>
-        ))
-      ) : (
+      <thead>
         <tr>
-          <td colSpan={columns.length}>No data</td>
+          {columns.map((column) => (
+            <th key={column.path} style={{ padding: 10, width: column.width }}>
+              {column.label}
+            </th>
+          ))}
         </tr>
-      )}
+      </thead>
+      <tbody>
+        {data.length ? (
+          data.map((rowData, index) => (
+            <tr key={rowData[rowKey]}>
+              {columns.map((column) =>
+                column.render ? (
+                  <td style={{ padding: 10 }}>
+                    {column.render({ rowData, index })}
+                  </td>
+                ) : (
+                  <td key={column.path} style={{ padding: 10 }}>
+                    {rowData[column.path]}
+                  </td>
+                )
+              )}
+            </tr>
+          ))
+        ) : (
+          <tr>
+            <td colSpan={columns.length}>No data</td>
+          </tr>
+        )}
+      </tbody>
     </table>
   );
 };

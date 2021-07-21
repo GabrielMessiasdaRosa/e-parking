@@ -4,39 +4,40 @@ import Separator from "../../components/separator";
 import Input from "../../components/input";
 import Button from "../../components/button";
 import { useToast } from "../../components/toast";
-import { useHistory, useParams,Link } from "react-router-dom";
+import { useHistory, useParams, Link } from "react-router-dom";
 import Label from "../../components/label";
-import saveBrandService from "../../services/brand-services/save-brand-service"
+import saveBrandService from "../../services/brand-services/save-brand-service";
 import getBrandsIdService from "../../services/brand-services/get-brand-id-service";
+import useForm from "../../hooks/use-form";
 
 const BrandFormScreen = () => {
-  const [brandId, setBrandId] = React.useState();
-  const [brandName, setBrandName] = React.useState("");
   const { notify } = useToast();
   const { goBack } = useHistory();
-
   const { id } = useParams();
 
-  const saveBrand = () => {
-    const message = id
-      ? `${brandName} successfully edited`
-      : ` ${brandName} successfully added`;
+  const { getValue, setValue, submit } = useForm({
+    initialValues: {},
+    onSubmit: ({ brand }) => {
+      const { id, name } = brand;
+      const message = id
+        ? `${name} successfully edited`
+        : ` ${name} successfully added`;
 
-    saveBrandService({ name: brandName, id }).then(() => {
-      notify({
-        intent: "success",
-        message,
+      saveBrandService({ name, id }).then(() => {
+        notify({
+          intent: "success",
+          message,
+        });
+        goBack();
       });
-      setBrandName("");
-      goBack();
-    });
-  };
+    },
+  });
+
 
   React.useEffect(() => {
     if (id) {
       getBrandsIdService({ id }).then((data) => {
-        setBrandId(data.id);
-        setBrandName(data.name);
+        setValue("brand", data)
       });
     }
   }, [id]);
@@ -52,35 +53,34 @@ const BrandFormScreen = () => {
       </div>
       <Separator />
       <form
-        onSubmit={(event) => {
-          event.preventDefault();
-          saveBrand();
-        }}
+        onSubmit={submit}
       >
-        <Input id="id" disabled value={brandId} />
+        <Input id="id" disabled value={getValue("brand.id")} />
         <Separator />
         <Label htmlFor="name">
-          <b>{id ? `Rename brand: ${brandName}` : "Brand Name"}</b>
+          <b>{id ? `Rename brand: ${"brand.name"}` : "Brand Name"}</b>
         </Label>
         <Separator />
         <Input
           id="name"
-          value={brandName}
-          onChange={(value) => setBrandName(value)}
+          value={getValue("brand.name")}
+          onChange={(value) => setValue("brand.name", value)}
           required
         />
         <Separator />
         <Input type="submit" value="Save brand" />
         <Link to="/brands">
-          <Button size="lg" style={{margin:"1em"}} intent="danger">Cancel</Button>
+          <Button size="lg" style={{ margin: "1em" }} intent="danger">
+            Cancel
+          </Button>
         </Link>
       </form>
-      <Separator size="xl"/>
-      <Separator size="xl"/>
-      <Separator size="xl"/>
-      <Separator size="md"/>
-      <Separator size="xl"/>
-      <Separator size="xl"/>
+      <Separator size="xl" />
+      <Separator size="xl" />
+      <Separator size="xl" />
+      <Separator size="md" />
+      <Separator size="xl" />
+      <Separator size="xl" />
     </Container>
   );
 };
